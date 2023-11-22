@@ -4,18 +4,18 @@ public class MyOptional<T> {
     private static final MyOptional<?> EMPTY = new MyOptional<>(null);
     private final T value;
 
-    public MyOptional(T value) {
+    private MyOptional(T value) {
         this.value = value;
     }
 
-    static <T> MyOptional of(T value) {
+    public static <T> MyOptional of(T value) {
         if (value == null) {
             throw new InvalidParameterException();
         }
         return new MyOptional<>(value);
     }
 
-    static <T> MyOptional<T> ofNullable(T value) {
+    public static <T> MyOptional<T> ofNullable(T value) {
         if (value == null) {
             return (MyOptional<T>) EMPTY;
         }
